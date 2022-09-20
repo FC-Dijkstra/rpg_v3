@@ -1,0 +1,30 @@
+Système tmps réel
+File d'action: 1er arrivé 1er servi
+
+Threads:
+    Timer global ?
+    a chaque tick -> incrémente le compteur de chaque thread
+
+sinle loop:
+    timer défini par le rendu
+
+Mécaniques:
+    Guard break
+    Faiblesse 
+    Force
+
+Effets:
+    Poison 
+    Confusion
+
+Multi (bonus):
+    Serveur qui contrôle l'horloge
+    chaque joueur joue 2 persos
+
+Environnement (bonus):
+    
+C#, Java, C++, JS, 
+
+Textures OSEF
+
+Temps reel -> Mecaniques -> Rendu -> Environnement -> multi
