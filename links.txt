@@ -1,0 +1,3 @@
+https://en.wikipedia.org/wiki/Entity_component_system
+Learn OpenGL
+Practical Game Design

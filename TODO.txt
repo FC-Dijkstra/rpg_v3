@@ -1,9 +1,11 @@
-Système tmps réel
-File d'action: 1er arrivé 1er servi
+Système temps réel
+File d'action: 1er arrivé 1er servi ?
+On a deux entités: le joueur et l'enemi.
+Les deux entités ont un compteur qui s'incrémente à chaque tick
+Au début du combat, le compteur s'initialise à une valeur aléatoire entre 0 et max_tick
+Avec des threads, on peut envisager une action comme étant un message déposé dans une file avec la cible comme destinataire
+Les threads sont en réception du tick, l'horloge s'arrète le temps que le joueur effectue une action.
 
-Threads:
-    Timer global ?
-    a chaque tick -> incrémente le compteur de chaque thread
 
 sinle loop:
     timer défini par le rendu
