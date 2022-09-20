@@ -1,3 +1,8 @@
 https://en.wikipedia.org/wiki/Entity_component_system
 Learn OpenGL
 Practical Game Design
+https://www.simplilearn.com/entity-component-system-introductory-guide-article
+https://docs.monogame.net/index.html
+https://github.com/SanderMertens/ecs-faq
+Programmation orientée données
+http://guillaume.belz.free.fr/doku.php?id=ecs

@@ -1,32 +1,45 @@
 Système temps réel
-File d'action: 1er arrivé 1er servi ?
-On a deux entités: le joueur et l'enemi.
-Les deux entités ont un compteur qui s'incrémente à chaque tick
-Au début du combat, le compteur s'initialise à une valeur aléatoire entre 0 et max_tick
-Avec des threads, on peut envisager une action comme étant un message déposé dans une file avec la cible comme destinataire
-Les threads sont en réception du tick, l'horloge s'arrète le temps que le joueur effectue une action.
-
-
-sinle loop:
-    timer défini par le rendu
+    File d'action: 1er arrivé 1er servi ?
+    On a deux entités: le joueur et l'enemi.
+    Les deux entités ont un compteur qui s'incrémente à chaque tick
+    Au début du combat, le compteur s'initialise à une valeur aléatoire entre 0 et max_tick
+    Avec des threads, on peut envisager une action comme étant un message déposé dans une file avec la cible comme destinataire
+    Les threads sont en réception du tick, l'horloge s'arrète le temps que le joueur effectue une action.
 
 Mécaniques:
     Guard break
     Faiblesse 
     Force
+    Armes
+    Objets
+    Sorts
+    Actions spéciales ?
+    ...
 
 Effets:
     Poison 
     Confusion
+    buff
+    debuff
+    ...
 
 Multi (bonus):
     Serveur qui contrôle l'horloge
-    chaque joueur joue 2 persos
+    chaque joueur joue 2 persos pour équilibrer ?
 
 Environnement (bonus):
+    map procédurale
+    évennements procéduraux
+    ...
     
-C#, Java, C++, JS, 
+TECHNO:
+    C#, Java, C++, JS
 
-Textures OSEF
+Cycles d'implémentation:
+    Temps reel -> Mecaniques -> Rendu -> Environnement -> multi -> ???
 
-Temps reel -> Mecaniques -> Rendu -> Environnement -> multi
+Futur+++++:
+    Version mobile ? 
+    Serveur sur un système dédié pour permettre intercompatibilité ?
+        -> quel backend ?
+        -> quel type d'API ?
