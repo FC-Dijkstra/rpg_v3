@@ -4,38 +4,39 @@
 TestGame::TestGame()
 {
 	//r = new Renderer();
+	this->r = NULL;
+	this->m = NULL;
+	this->shader = NULL;
 }
 
 void TestGame::init()
 {
 	//r->init();
 
-	std::vector<float> pos =
+	std::vector<float>* pos = new std::vector<float>(
 	{
 		-0.5f,  0.5f, 0.0f,
 		0.5f, 0.5f, 0.0f,
 		0.5f, -0.5f, 0.0f,
 		-0.5f,  -0.5f, 0.0f
-	};
+	});
 
-	std::vector<float> col =
+	std::vector<float>* col = new std::vector<float>(
 	{
 		1.0f, 0.0f, 1.0f,
 		1.0f, 1.0f, 0.0f,
 		0.0f, 1.0f, 1.0f,
 		1.0f, 1.0f, 1.0f
-	};
+	});
 
-	std::vector<int> idx =
+	std::vector<int>* idx = new std::vector<int>(
 	{
 		0, 1, 2, 2, 3, 0
-	};
+	});
 
-	m = new Mesh(&pos, &col, &idx);
+	this->m = new Mesh(pos, col, idx);
 
 	shader = new Shader("shaders/vertexShader.generic.glsl", "shaders/fragmentShader.generic.glsl");
-
-	glEnable(GL_DEPTH_TEST);
 }
 
 void TestGame::input(Window* w)
@@ -57,9 +58,10 @@ void TestGame::render(Window* w)
 	//w->setClearColor(sin(glfwGetTime()), cos(glfwGetTime()), cos(glfwGetTime() + 0.5), 1.0f);
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glEnable(GL_DEPTH_TEST);
 	shader->bind();
 
-	m->render();
+	this->m->render();
 
 	shader->unbind();
 }

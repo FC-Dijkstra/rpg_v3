@@ -109,7 +109,7 @@ void Shader::linkTexture(unsigned int texture,const char * texture_shader_name) 
 	unsigned int textureLocation = glGetUniformLocation(ProgramID, texture_shader_name);
 	glUniform1i(textureLocation, textures.size());
 	textures.push_back(texture);
-	//glBindTexture(GL_TEXTURE_2D, texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
 }
 
 void Shader::bindTextures(){

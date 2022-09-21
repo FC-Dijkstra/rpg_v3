@@ -3,7 +3,12 @@
 Mesh::Mesh(std::vector<float>* positions, std::vector<float>* colors, std::vector<int>* indices)
 {
 	this->vertexCount = indices->size();
-	this->colorOffset = sizeof(float) * positions->size();
+	this->colorOffset = 0;
+
+	int positionsSize = sizeof(float) * positions->size();
+	int colorsSize = sizeof(float) * colors->size();
+	int totalSize = sizeof(float) * (positions->size() + colors->size());
+
 
 	glGenVertexArrays(1, &(this->vaoID));
 	glBindVertexArray(this->vaoID);
@@ -11,37 +16,47 @@ Mesh::Mesh(std::vector<float>* positions, std::vector<float>* colors, std::vecto
 	//on crée un vbo capable de contenir toutes les données de géométrie et couleur
 	glGenBuffers(1, &(this->vboID));
 	glBindBuffer(GL_ARRAY_BUFFER, this->vboID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * (positions->size() + colors->size()), NULL, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, totalSize, 0, GL_STATIC_DRAW);
 
 	//on fusionne les données de position et couleur dans un seul buffer
-	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float) * positions->size(), positions->data());
-	glBufferSubData(GL_ARRAY_BUFFER, colorOffset, sizeof(float) * colors->size(), colors->data());
+	glBufferSubData(GL_ARRAY_BUFFER, 0, positionsSize, positions->data());
+	glBufferSubData(GL_ARRAY_BUFFER, positionsSize, colorsSize, colors->data());
 
 	//on active les pointeurs pour les deux attributs (position et couleur)
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
 	//comme les deux tableaux sont mis l'un après l'autre, pour retrouver la couleur d'un vertex on décale de la taille 
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float), (void*)colorOffset);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float), (void*)positionsSize);
 	glEnableVertexAttribArray(1);
 
 	//on associe les indices d'utilisations des points.
 	glGenBuffers(1, &(this->eboID));
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->eboID);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices->data(), GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * indices->size(), indices->data(), GL_STATIC_DRAW);
+
+	GLint size = 0;
+	glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &size);
+	std::cout << "buffer size: " << size << " expected: " << sizeof(positions) + sizeof(colors) <<  std::endl;
+	std::cout << "other " << sizeof(float) * (positions->size() + colors->size()) << std::endl;
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 	
-	std::cout << "created mesh with " << this->vertexCount << " vertices from " << positions->size() << " positions | " << this->colorOffset << " : colorOffset" << std::endl;
+	std::cout << "created mesh with " << this->vertexCount << " vertices from " << positions->size() << " positions" << std::endl;
+	std::cout << "vaoID: " << this->vaoID << " | vboID: " << this->vboID << " | eboID: " << this->eboID << std::endl;
+	
 }
 
 void Mesh::render()
 {
 	glBindVertexArray(this->vaoID);
-	std::cout << "mesh drawn" << std::endl;
-	glDrawElements(GL_TRIANGLES, this->vertexCount, GL_UNSIGNED_INT, nullptr);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->eboID);
 
+	glDrawElements(GL_TRIANGLES, this->vertexCount, GL_UNSIGNED_INT, 0);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 }
 

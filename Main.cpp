@@ -2,6 +2,7 @@
 #include "Engine/Engine.h"
 #include "Engine/IGame.h"
 #include "Game/TestGame.h"
+#include <GLFW/glfw3.h>
 
 void main(void)
 {
@@ -107,11 +108,11 @@ int main2(void)
 
 	//on active les pointeurs pour les deux attributs (position et couleur)
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
+	//glEnableVertexAttribArray(0);
 
 	//comme les deux tableaux sont mis l'un après l'autre, pour retrouver la couleur d'un vertex on décale de la taille 
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)colorOffset);
-	glEnableVertexAttribArray(1);
+	//glEnableVertexAttribArray(1);
 
 	//on associe les indices d'utilisations des points.
 	glGenBuffers(1, &eboID);
