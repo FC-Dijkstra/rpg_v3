@@ -35,16 +35,18 @@ Mesh::Mesh(std::vector<float>* positions, std::vector<float>* colors, std::vecto
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->eboID);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * indices->size(), indices->data(), GL_STATIC_DRAW);
 
+	//vérification de la taille du buffer
 	GLint size = 0;
 	glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &size);
-	std::cout << "buffer size: " << size << " expected: " << sizeof(positions) + sizeof(colors) <<  std::endl;
-	std::cout << "other " << sizeof(float) * (positions->size() + colors->size()) << std::endl;
+	std::cout << "buffer size: " << size << " bytes, expected: " << totalSize <<  " bytes" << std::endl;
 
+	//nettoyage
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 	
-	std::cout << "created mesh with " << this->vertexCount << " vertices from " << positions->size() << " positions" << std::endl;
+	//log
+	std::cout << "created mesh with " << this->vertexCount << " vertices from " << positions->size() << " points" << std::endl;
 	std::cout << "vaoID: " << this->vaoID << " | vboID: " << this->vboID << " | eboID: " << this->eboID << std::endl;
 	
 }
