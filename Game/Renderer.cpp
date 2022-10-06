@@ -7,7 +7,7 @@ Renderer::Renderer()
 
 void Renderer::init()
 {
-	shader = new Shader("shaders/vertexShader.generic.glsl", "shaders/fragmentShader.generic.glsl");
+	shader = new Shader("shaders/vertexShader.generic.glsl", "shaders/fragmentShader.generic.glsl", nullptr);
 }
 
 void Renderer::render(Window* w, Mesh* m)

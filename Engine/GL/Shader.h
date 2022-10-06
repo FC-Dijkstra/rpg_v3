@@ -2,10 +2,11 @@
 #include <vector>
 #include <iostream>
 #include "glm/glm.hpp"
+#include "../../lib/glad/glad.h"
 
 class Shader {
 public:
-	Shader(const char* vertex_file_path, const char* fragment_file_path);
+	Shader(const char* vertex_file_path, const char* fragment_file_path, const char* geo_file_path);
 	void linkTexture(unsigned int texture, const char * texture_shader_name);
 	void bind();
 	void unbind();
@@ -15,6 +16,11 @@ public:
 	~Shader();
 
 private:
+	Shader() {};
 	GLuint ProgramID;
 	std::vector<GLuint> textures;
+
+	void check(GLuint shaderID);
+	std::string load(const char* filePath);
+	void compile(std::string code, GLuint shaderID);
 };

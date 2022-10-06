@@ -48,6 +48,9 @@
     <ClCompile Include="lib\glad\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\ResourceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Renderer.h">
@@ -74,7 +77,7 @@
     <ClInclude Include="engine\gl\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="engine\gl\Shader.hpp">
+    <ClInclude Include="engine\gl\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="engine\utilities\FPSCounter.h">
@@ -87,6 +90,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="lib\glad\khrplatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

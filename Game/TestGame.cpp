@@ -36,7 +36,7 @@ void TestGame::init()
 
 	this->m = new Mesh(pos, col, idx);
 
-	shader = new Shader("shaders/vertexShader.generic.glsl", "shaders/fragmentShader.generic.glsl");
+	shader = new Shader("shaders/vertexShader.generic.glsl", "shaders/fragmentShader.generic.glsl", nullptr);
 }
 
 void TestGame::input(Window* w)

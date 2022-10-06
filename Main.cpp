@@ -122,7 +122,7 @@ int main2(void)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
-	Shader* shader = new Shader("shaders/vertexShader.generic.glsl", "shaders/fragmentShader.generic.glsl");
+	Shader* shader = new Shader("shaders/vertexShader.generic.glsl", "shaders/fragmentShader.generic.glsl", nullptr);
 
 	glEnable(GL_DEPTH_TEST);
 

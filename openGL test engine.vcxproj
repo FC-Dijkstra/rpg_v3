@@ -111,11 +111,12 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Game\Renderer.cpp" />
     <ClCompile Include="Game\TestGame.cpp" />
+    <ClCompile Include="Engine\ResourceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Engine.h" />
     <ClInclude Include="engine\gl\Camera.h" />
-    <ClInclude Include="engine\gl\Shader.hpp" />
+    <ClInclude Include="engine\gl\Shader.h" />
     <ClInclude Include="engine\gl\Texture.h" />
     <ClInclude Include="engine\IGame.h" />
     <ClInclude Include="engine\Mesh.h" />
@@ -126,6 +127,7 @@
     <ClInclude Include="lib\stb_image.h" />
     <ClInclude Include="Game\Renderer.h" />
     <ClInclude Include="Game\TestGame.h" />
+    <ClInclude Include="Engine\ResourceManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

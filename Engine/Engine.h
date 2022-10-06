@@ -29,6 +29,6 @@ private:
 	Game* game;
 	bool stop;
 
-	const float TARGET_FPS = 144;
+	const float TARGET_FPS = 60;
 };
 
