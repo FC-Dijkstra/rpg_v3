@@ -1,7 +1,7 @@
 #pragma once
 #include "../lib/glad/glad.h"
 #include "../Engine/IGame.h"
-#include "../Engine/Mesh.h"
+#include "Engine/Mesh.h"
 #include "Renderer.h"
 
 class TestGame : public Game

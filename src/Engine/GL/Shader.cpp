@@ -65,7 +65,7 @@ Shader::Shader(const char * vertex_file_path, const char * fragment_file_path, c
 	glDeleteShader(geoShaderID);
 }
 
-std::string load(const char* filePath) {
+std::string Shader::load(const char* filePath) {
 	std::string ShaderCode;
 	std::ifstream ShaderStream(filePath, std::ios::in);
 	if (ShaderStream.is_open()) {

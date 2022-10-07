@@ -16,7 +16,6 @@ public:
 	~Shader();
 
 private:
-	Shader() {};
 	GLuint ProgramID;
 	std::vector<GLuint> textures;
 

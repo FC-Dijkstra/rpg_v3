@@ -9,16 +9,15 @@ Mesh::Mesh(std::vector<float>* positions, std::vector<float>* colors, std::vecto
 	int colorsSize = sizeof(float) * colors->size();
 	int totalSize = sizeof(float) * (positions->size() + colors->size());
 
-
 	glGenVertexArrays(1, &(this->vaoID));
 	glBindVertexArray(this->vaoID);
 
-	//on crée un vbo capable de contenir toutes les données de géométrie et couleur
+	//on crï¿½e un vbo capable de contenir toutes les donnï¿½es de gï¿½omï¿½trie et couleur
 	glGenBuffers(1, &(this->vboID));
 	glBindBuffer(GL_ARRAY_BUFFER, this->vboID);
 	glBufferData(GL_ARRAY_BUFFER, totalSize, 0, GL_STATIC_DRAW);
 
-	//on fusionne les données de position et couleur dans un seul buffer
+	//on fusionne les donnï¿½es de position et couleur dans un seul buffer
 	glBufferSubData(GL_ARRAY_BUFFER, 0, positionsSize, positions->data());
 	glBufferSubData(GL_ARRAY_BUFFER, positionsSize, colorsSize, colors->data());
 
@@ -26,7 +25,7 @@ Mesh::Mesh(std::vector<float>* positions, std::vector<float>* colors, std::vecto
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
-	//comme les deux tableaux sont mis l'un après l'autre, pour retrouver la couleur d'un vertex on décale de la taille 
+	//comme les deux tableaux sont mis l'un aprs l'autre, pour retrouver la couleur d'un vertex on dï¿½cale de la taille
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float), (void*)positionsSize);
 	glEnableVertexAttribArray(1);
 
@@ -35,7 +34,7 @@ Mesh::Mesh(std::vector<float>* positions, std::vector<float>* colors, std::vecto
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->eboID);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * indices->size(), indices->data(), GL_STATIC_DRAW);
 
-	//vérification de la taille du buffer
+	//vï¿½rification de la taille du buffer
 	GLint size = 0;
 	glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &size);
 	std::cout << "buffer size: " << size << " bytes, expected: " << totalSize <<  " bytes" << std::endl;

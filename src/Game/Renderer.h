@@ -2,7 +2,7 @@
 #include "../lib/glad/glad.h"
 #include "../Engine/Window.h"
 #include "../Engine/GL/Shader.h"
-#include "../Engine/Mesh.h"
+#include "Engine/Mesh.h"
 
 class Renderer
 {

@@ -5,8 +5,8 @@ Engine* Engine::instance = 0;
 
 Engine::Engine(string windowTitle, int width, int height, bool vSync, Game* g)
 {
-	window = new Window(width, height, windowTitle, vSync);
-	game = g;
+	this->window = new Window(width, height, windowTitle, vSync);
+	this->game = g;
 
 	Engine::instance = this;
 }

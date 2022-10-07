@@ -59,18 +59,20 @@ int Window::init()
 	glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 	glfwWindowHint(GLFW_SAMPLES, 2);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	//glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    //openGL 4.3 non suppportÃ© sur macOS
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, true);
 
 
-	//création de la fenêtre
+	//crÃ©ation de la fenetre
 	this->glfwHandle = glfwCreateWindow(this->width, this->height, this->title.c_str(), NULL, NULL);
 	if (glfwHandle == NULL)
 	{
-		fprintf(stderr, "impossible de créer la fenêtre GLFW");
+		fprintf(stderr, "impossible de crÃ©er la fenÃªtre GLFW");
 		glfwTerminate();
 		return -1;
 	}
@@ -88,7 +90,9 @@ int Window::init()
 
 	if (!gladLoadGL())
 	{
-		throw new std::exception("Impossible d'initialiser GLAD");
+        fprintf(stderr, " Impossible d'initialiser GLAD");
+        glfwTerminate();
+        return -1;
 	}
 
 	if (isvSync())
@@ -96,7 +100,7 @@ int Window::init()
 		glfwSwapInterval(1);
 	}
 
-	//vérification de l'activation du débogage openGL
+	//vï¿½rification de l'activation du dï¿½bogage openGL
 	int flags;
 	glGetIntegerv(GL_CONTEXT_FLAGS, &flags);
 	if (flags & GL_CONTEXT_FLAG_DEBUG_BIT) {
@@ -105,10 +109,10 @@ int Window::init()
 		glDebugMessageCallback(glDebugOutput, nullptr);
 		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
 
-		std::cout << "Débogage openGL actif" << std::endl;
+		std::cout << "Dï¿½bogage openGL actif" << std::endl;
 	}
 	else {
-		std::cout << "Débogage openGL inactif" << std::endl;
+		std::cout << "Dï¿½bogage openGL inactif" << std::endl;
 	}
 
 	glfwShowWindow(glfwHandle);
@@ -176,12 +180,12 @@ void Window::setResized(bool value)
 
 void Window::setWidth(int value)
 {
-	this->width = width;
+	this->width = value;
 }
 
 void Window::setHeight(int value)
 {
-	this->height = height;
+	this->height = value;
 }
 
 void Window::setvSync(bool value)
