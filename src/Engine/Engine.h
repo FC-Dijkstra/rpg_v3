@@ -1,7 +1,7 @@
 #pragma once
 #include "../lib/glad/glad.h"
-#include <glm/glm.hpp>
-#include <GLFW/glfw3.h>
+#include "lib/glm/glm.hpp"
+#include "lib/GLFW/glfw3.h"
 #include <string>
 #include "IGame.h"
 #include "Window.h"

@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 #include "../../lib/glad/glad.h"
-#include <GLFW/glfw3.h>
+#include "lib/GLFW/glfw3.h"
 #include "../../lib/stb_image.h"
 #include "Texture.h"
 

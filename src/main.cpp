@@ -2,7 +2,7 @@
 #include "Engine/Engine.h"
 #include "Engine/IGame.h"
 #include "Game/TestGame.h"
-#include <GLFW/glfw3.h>
+#include "lib/GLFW/glfw3.h"
 
 int main(void)
 {

@@ -59,9 +59,14 @@ int Window::init()
 	glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 	glfwWindowHint(GLFW_SAMPLES, 2);
-	//glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    //openGL 4.3 non suppporté sur macOS
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	
+#ifdef __APPLE__
+#define __OPENGL_MAJOR_VERSION 3
+#elif WIN32 || WIN64
+#define __OPENGL_MAJOR_VERSION 4
+#endif
+
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, __OPENGL_MAJOR_VERSION);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -109,10 +114,10 @@ int Window::init()
 		glDebugMessageCallback(glDebugOutput, nullptr);
 		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
 
-		std::cout << "D�bogage openGL actif" << std::endl;
+		std::cout << "Debogage openGL actif" << std::endl;
 	}
 	else {
-		std::cout << "D�bogage openGL inactif" << std::endl;
+		std::cout << "Debogage openGL inactif" << std::endl;
 	}
 
 	glfwShowWindow(glfwHandle);

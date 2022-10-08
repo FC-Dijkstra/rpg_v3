@@ -1,8 +1,8 @@
 #pragma once
 #include "../lib/glad/glad.h"
 #include <string>
-#include <glm/glm.hpp>
-#include <GLFW/glfw3.h>
+#include "lib/glm/glm.hpp"
+#include "lib/GLFW/glfw3.h"
 #include "Engine.h"
 #include "utilities/FPSCounter.h"
 

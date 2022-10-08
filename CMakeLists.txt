@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.8)
 project(rpg)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -14,7 +14,7 @@ file (GLOB_RECURSE HEADER_FILES
 configure_file(src/helpers/RootDir.h.in src/helpers/RootDir.h)
 include_directories(${CMAKE_BINARY_DIR}/src)
 
-add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES} src/Game/GameState.h)
+add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
@@ -67,7 +67,7 @@ endif()
 if(WIN32)
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_directory
-            "${PROJECT_SOURCE_DIR}/dlls"
+            "${PROJECT_SOURCE_DIR}/dll"
             $<TARGET_FILE_DIR:${PROJECT_NAME}>)
 endif()
 

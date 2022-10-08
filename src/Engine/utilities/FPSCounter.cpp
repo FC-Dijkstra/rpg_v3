@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <GLFW/glfw3.h>
+#include "lib/GLFW/glfw3.h"
 #include "FPSCounter.h"
 double lastTime;
 int nbFrames;

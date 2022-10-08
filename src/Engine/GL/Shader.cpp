@@ -9,8 +9,8 @@ using namespace std;
 #include <stdlib.h>
 #include <string.h>
 #include "../../lib/glad/glad.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "lib/glm/glm.hpp"
+#include "lib/glm/gtc/type_ptr.hpp"
 #include "Shader.h"
 
 Shader::Shader(const char * vertex_file_path, const char * fragment_file_path, const char * geo_file_path) {

@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <iostream>
-#include "glm/glm.hpp"
+#include "lib/glm/glm.hpp"
 #include "../../lib/glad/glad.h"
 
 class Shader {

@@ -18,11 +18,14 @@ set( _glfw3_HEADER_SEARCH_DIRS
         "/usr/include"
         "/usr/local/include"
         "${CMAKE_SOURCE_DIR}/include"
+        "${CMAKE_SOURCE_DIR}/src/lib"
         "C:/Program Files (x86)/glfw/include" )
 set( _glfw3_LIB_SEARCH_DIRS
         "/usr/lib"
         "/usr/local/lib"
         "${CMAKE_SOURCE_DIR}/lib"
+        "${CMAKE_SOURCE_DIR}/src/lib"
+        "${CMAKE_SOURCE_DIR}/src/lib/GLFW"
         "C:/Program Files (x86)/glfw/lib-msvc110" )
 
 # Check environment for root search directory

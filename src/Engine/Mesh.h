@@ -1,7 +1,7 @@
 #pragma once
 #include "lib/glad/glad.h"
 #include <vector>
-#include <GLFW/glfw3.h>
+#include "lib/GLFW/glfw3.h"
 #include <iostream>
 
 class Mesh
