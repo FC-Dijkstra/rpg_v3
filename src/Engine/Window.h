@@ -1,11 +1,13 @@
 #pragma once
-#include "../lib/glad/glad.h"
+#include <glad/glad.h>
 #include <string>
-#include "lib/glm/glm.hpp"
-#include "lib/GLFW/glfw3.h"
-#include "Engine.h"
+#include <iostream>
+#include <glm/glm.hpp>
+#include <GLFW/glfw3.h>
 #include "utilities/FPSCounter.h"
+#include "Engine.h"
 
+class Engine; //déclaration anticipée pour éviter une dépendance circulaire.
 
 class Window
 {
@@ -17,10 +19,12 @@ public:
 	void setShouldClose(bool value);
 	bool isKeyPressed(int keyCode);
 	void update();
-	
+	void clear();
+
 	int getWidth();
 	int getHeight();
 	std::string getTitle();
+	GLFWwindow* getHandle();
 
 	bool isResized();
 	bool isvSync();

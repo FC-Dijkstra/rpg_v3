@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
-#include "../../lib/glad/glad.h"
-#include "lib/GLFW/glfw3.h"
-#include "../../lib/stb_image.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include "stb_image/stb_image.h"
 #include "Texture.h"
 
 Texture2D::Texture2D()

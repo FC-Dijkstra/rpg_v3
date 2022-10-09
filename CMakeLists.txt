@@ -24,14 +24,37 @@ find_package(OpenGL REQUIRED)
 find_package(GLM REQUIRED)
 message(STATUS "GLM included at ${GLM_INCLUDE_DIR}")
 
-# GLFW
 find_package(GLFW3 REQUIRED)
 message(STATUS "Found GLFW3 in ${GLFW3_INCLUDE_DIR}")
 
-add_library(STB_IMAGE "${CMAKE_SOURCE_DIR}/src/lib/stb_image.cpp")
-add_library(GLAD "${CMAKE_SOURCE_DIR}/src/lib/glad/glad.c")
+set(LIB_PATH "${CMAKE_SOURCE_DIR}/include")
 
-set(LIBS ${GLFW3_LIBRARY} ${OPENGL_LIBRARY} GLAD ${CMAKE_DL_LIBS} STB_IMAGE)
+add_library(STB_IMAGE STATIC "${LIB_PATH}/stb_image/stb_image.cpp")
+target_include_directories(STB_IMAGE INTERFACE "${LIB_PATH}/stb_image/")
+
+add_library(GLAD STATIC "${LIB_PATH}/glad/glad.c" "${LIB_PATH}/glad/glad.h" "${LIB_PATH}/glad/khrplatform.h")
+target_include_directories(GLAD PUBLIC "${LIB_PATH}/glad/")
+
+add_library(NUKLEAR STATIC "${LIB_PATH}/Nuklear/nuklear.cpp")
+target_include_directories(NUKLEAR INTERFACE "${LIB_PATH}/Nuklear")
+
+add_library(IMGUI STATIC)
+target_sources(
+    IMGUI
+    PRIVATE
+    ${LIB_PATH}/ImGUI/imgui_demo.cpp
+    ${LIB_PATH}/ImGUI/imgui_draw.cpp
+    ${LIB_PATH}/ImGUI/imgui_tables.cpp
+    ${LIB_PATH}/ImGUI/imgui_widgets.cpp
+    ${LIB_PATH}/ImGUI/imgui.cpp
+    ${LIB_PATH}/ImGUI/imgui_demo.cpp
+    PRIVATE
+    ${LIB_PATH}/ImGUI/imgui_impl_opengl3.h
+    ${LIB_PATH}/ImGUI/imgui_impl_glfw.h
+)
+target_include_directories(IMGUI PUBLIC "${LIB_PARTH}/ImGUI/")
+
+set(LIBS ${GLFW3_LIBRARY} ${OPENGL_LIBRARY} GLAD ${CMAKE_DL_LIBS} STB_IMAGE IMGUI)
 
 include_directories(
         "${CMAKE_SOURCE_DIR}/src"
@@ -41,7 +64,7 @@ include_directories(
         "/usr/local/include"
 )
 
-target_link_libraries(${PROJECT_NAME} ${LIBS})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${LIBS})
 
 if(MSVC_IDE)
     # Macro to preserve source files hierarchy in the IDE

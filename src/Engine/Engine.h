@@ -1,14 +1,15 @@
 #pragma once
-#include "../lib/glad/glad.h"
-#include "lib/glm/glm.hpp"
-#include "lib/GLFW/glfw3.h"
+#include <glad/glad.h>
+#include <glm/glm.hpp>
+#include <GLFW/glfw3.h>
 #include <string>
 #include "IGame.h"
 #include "Window.h"
 #include <iostream>
+#include <Engine/UI.h>
 
-class Window;
-class Game;
+class Window; //déclaration anticipée pour éviter d'avoir une dépendance circulaire.
+class Game; //déclaration anticipée pour éviter d'avoir une dépendance circulaire
 
 class Engine
 {
@@ -26,6 +27,7 @@ public:
 
 private:
 	Window* window;
+	UI* ui;
 	Game* game;
 	bool stop;
 

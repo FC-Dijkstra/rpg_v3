@@ -1,5 +1,5 @@
 #pragma once
-#include "../lib/glad/glad.h"
+#include <glad/glad.h>
 #include "../Engine/Window.h"
 #include "../Engine/GL/Shader.h"
 #include "Engine/Mesh.h"

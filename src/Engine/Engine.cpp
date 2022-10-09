@@ -5,7 +5,9 @@ Engine* Engine::instance = 0;
 
 Engine::Engine(string windowTitle, int width, int height, bool vSync, Game* g)
 {
+	this->stop = false;
 	this->window = new Window(width, height, windowTitle, vSync);
+	this->ui = new UI();
 	this->game = g;
 
 	Engine::instance = this;
@@ -20,6 +22,7 @@ void Engine::run()
 void Engine::init()
 {
 	window->init();
+	ui->init(window->getHandle());
 	game->init();
 }
 
@@ -34,10 +37,13 @@ void Engine::loop()
 		game->input(window);
 		game->update(TARGET_FPS);
 		game->render(window);
+		ui->render();
 		window->update();
 	}
 
-	game->flush();
+	game->clear();
+	ui->clear();
+	window->clear();
 
 	exit(0);
 }

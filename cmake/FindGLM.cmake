@@ -33,6 +33,7 @@ SET(_glm_HEADER_SEARCH_DIRS
         "/usr/include"
         "/usr/local/include"
         "${CMAKE_SOURCE_DIR}/include"
+        "${CMAKE_SOURCE_DIR}/lib"
         "${CMAKE_SOURCE_DIR}/src/lib"
         "C:/Program Files (x86)/glm" )
 # check environment variable

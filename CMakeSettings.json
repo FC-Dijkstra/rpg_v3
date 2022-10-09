@@ -9,7 +9,24 @@
       "installRoot": "${projectDir}\\out\\install\\${name}",
       "cmakeCommandArgs": "",
       "buildCommandArgs": "",
-      "ctestCommandArgs": ""
+      "ctestCommandArgs": "",
+      "variables": [
+        {
+          "name": "GLFW3_INCLUDE_DIR",
+          "value": "D:/Yann/CODE/rpg_v3/include",
+          "type": "PATH"
+        },
+        {
+          "name": "GLFW3_LIBRARY",
+          "value": "D:/Yann/CODE/rpg_v3/lib/GLFW/glfw3.lib",
+          "type": "FILEPATH"
+        },
+        {
+          "name": "GLM_INCLUDE_DIR",
+          "value": "D:/Yann/CODE/rpg_v3/include",
+          "type": "PATH"
+        }
+      ]
     }
   ]
 }

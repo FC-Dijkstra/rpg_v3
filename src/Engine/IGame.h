@@ -6,10 +6,10 @@ class Window;
 class Game
 {
 public:
-	virtual void init() = 0;
-	virtual void input(Window* w) = 0;
-	virtual void update(float interval) = 0;
-	virtual void render(Window* w) = 0;
+	virtual void init() {};
+	virtual void input(Window* w) {};
+	virtual void update(float interval) {};
+	virtual void render(Window* w) {};
 
-	virtual void flush() = 0;
+	virtual void clear() {};
 };

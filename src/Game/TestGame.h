@@ -1,8 +1,10 @@
 #pragma once
-#include "../lib/glad/glad.h"
+#include <glad/glad.h>
 #include "../Engine/IGame.h"
 #include "Engine/Mesh.h"
 #include "Renderer.h"
+
+class Engine; //déclaration anticipée pour éviter une dépendance circulaire.
 
 class TestGame : public Game
 {

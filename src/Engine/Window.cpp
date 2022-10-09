@@ -152,6 +152,11 @@ void Window::setShouldClose(bool value)
 	glfwSetWindowShouldClose(glfwHandle, GL_TRUE);
 }
 
+void Window::clear() {
+	glfwDestroyWindow(this->glfwHandle);
+	glfwTerminate();
+}
+
 void Window::setClearColor(float r, float g, float b, float alpha)
 {
 	glClearColor(r, g, b, alpha);
@@ -176,6 +181,11 @@ int Window::getHeight()
 std::string Window::getTitle()
 {
 	return this->title;
+}
+
+GLFWwindow* Window::getHandle()
+{
+	return this->glfwHandle;
 }
 
 void Window::setResized(bool value)
